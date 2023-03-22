@@ -1,18 +1,21 @@
 const express = require('express');
+const routerApi = require('./routes')
+const cors = require('cors');
+
 const app = express();
-const port = 3000;
+app.use(express.json());
+const port = 3080;
+
+app.use(cors());
+
 
 app.get('/', (req, res) =>{
-  res.send("Hola, este es mi servidor con express")
+  res.send("Welcom to Equilibrium API")
 })
 
-app.get('/categories', (req, res) =>{
-  res.json({
-    name:'Hi, I am the categories endpoind'
-  })
-})
-
+routerApi(app);
 
 app.listen(port, () =>{
-  console.log("it is working on port 3000")
+  console.log("it is working on port 3080")
 })
+
