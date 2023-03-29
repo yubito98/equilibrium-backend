@@ -1,19 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const CategoriesService = require('../service/categories.service')
+
+const service = new CategoriesService();
 
 router.get('/', (req, res) =>{
-  res.json([
-    {
-      id:1,
-      name: "Work",
-      description: "Here goes the description",
-    },
-    {
-      id:2,
-      name: "Health",
-      description: "Here goes the description",
-    }
-  ])
+  try{
+    const allCategories = service.allCategories()
+    res.status(200).json(allCategories)
+  }catch(error){
+    res.status(404).json({
+      message:"not found"
+    })
+  }
 })
 
 router.get('/:categoryId', (req, res) =>{

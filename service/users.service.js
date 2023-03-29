@@ -12,7 +12,7 @@ class UsersService{
       this.users.push({
         id: faker.datatype.uuid(),
         name: faker.name.firstName(),
-        birthdate: faker.date.birthdate()
+        country: faker.address.country(),
       })
     }
 
@@ -27,7 +27,7 @@ class UsersService{
   }
 
   updateUser(){
-    
+
   }
 
   allUsers(){
