@@ -20,8 +20,12 @@ class CategoriesService{
     return this.categories
   }
 
-  createCategory(){
-
+  createCategory(body){
+    this.categories.push(body);
+    return{
+      message: "Category Created",
+      data: body
+    }
   }
 }
 

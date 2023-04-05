@@ -15,20 +15,19 @@ router.get('/', (req, res) =>{
   }
 })
 
-router.get('/:categoryId', (req, res) =>{
-  const { categoryId } = req.params
-  res.json([
-    {
-      categoryId,
-      name: "Work",
-      description: "Here goes the description",
-    },
-    {
-      categoryId,
-      name: "Health",
-      description: "Here goes the description",
-    }
-  ])
+
+router.post('/', (req, res) =>{
+  try{
+    const body =  req.body;
+    const category = service.createCategory(body);
+    res.status(201).json(category)
+  }catch(error){
+    res.status(404).json({
+      message:"not found"
+    })
+  }
 })
+
+
 
 module.exports = router
